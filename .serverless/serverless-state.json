@@ -12,7 +12,8 @@
         {
           "Effect": "Allow",
           "Action": [
-            "dynamodb:UpdateItem"
+            "dynamodb:UpdateItem",
+            "dynamodb:GetItem"
           ],
           "Resource": "arn:aws:dynamodb:us-east-1:657750297473:table/eventCounter"
         },
@@ -196,7 +197,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/task-eventbridge/dev/1702025355932-2023-12-08T08:49:15.932Z/task-eventbridge.zip"
+                "S3Key": "serverless/task-eventbridge/dev/1702032186994-2023-12-08T10:43:06.994Z/task-eventbridge.zip"
               },
               "Handler": "handler.eventCounter",
               "Runtime": "nodejs14.x",
@@ -214,14 +215,14 @@
               "UpdateCounterLogGroup"
             ]
           },
-          "UpdateCounterLambdaVersionjY0Jdd0zjpSBn1gN5ja08wULkIQByUN2fmoqyCsGc": {
+          "UpdateCounterLambdaVersionGmKxobpe2AwX6dVWuiiQJ8NCx4fK2HACgmQC5zg1wmk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateCounterLambdaFunction"
               },
-              "CodeSha256": "rwIm8vo1wYurGawJF2ZgqPnTM2x4bCG7qMZy+FaUqbw="
+              "CodeSha256": "RM0wlV484ev3V3GDNjL2UJEzv2+P5+YvZotz2wQGf2I="
             }
           },
           "UpdateCounterEventsRuleSchedule1": {
@@ -298,7 +299,7 @@
           "UpdateCounterLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateCounterLambdaVersionjY0Jdd0zjpSBn1gN5ja08wULkIQByUN2fmoqyCsGc"
+              "Ref": "UpdateCounterLambdaVersionGmKxobpe2AwX6dVWuiiQJ8NCx4fK2HACgmQC5zg1wmk"
             },
             "Export": {
               "Name": "sls-task-eventbridge-dev-UpdateCounterLambdaFunctionQualifiedArn"
@@ -412,7 +413,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "UpdateCounterLambdaVersionjY0Jdd0zjpSBn1gN5ja08wULkIQByUN2fmoqyCsGc"
+        "versionLogicalId": "UpdateCounterLambdaVersionGmKxobpe2AwX6dVWuiiQJ8NCx4fK2HACgmQC5zg1wmk"
       }
     },
     "resources": {
@@ -461,7 +462,7 @@
     "artifact": "C:\\Users\\SUDKAUR\\SubwayKT\\SubAssignments\\task-eventbridge\\.serverless\\task-eventbridge.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/task-eventbridge/dev/1702025355932-2023-12-08T08:49:15.932Z",
+    "artifactDirectoryName": "serverless/task-eventbridge/dev/1702032186994-2023-12-08T10:43:06.994Z",
     "artifact": "task-eventbridge.zip"
   }
 }

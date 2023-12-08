@@ -10,6 +10,7 @@ provider:
     - Effect: Allow
       Action:
         - dynamodb:UpdateItem
+        - dynamodb:GetItem
       Resource: 
         - "arn:aws:dynamodb:us-east-1:657750297473:table/eventCounter"
 
