@@ -1,0 +1,45 @@
+
+
+service: task-eventbridge
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:UpdateItem
+      Resource: 
+        - "arn:aws:dynamodb:us-east-1:657750297473:table/eventCounter"
+
+    - Effect: Allow
+      Action:
+        - events:PutEvents
+      Resource: "*"
+
+functions:
+  updateCounter:
+    handler: handler.eventCounter
+    events:
+       - schedule:
+          name: UpdateCounterSchedule
+          description: Schedule to update counter every 3 minutes
+          rate: rate(3 minutes) # Updated ScheduleExpression
+          enabled: true
+
+resources:
+  Resources:
+    CounterTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: eventCounter
+        AttributeDefinitions:
+          - AttributeName: counterId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: counterId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
